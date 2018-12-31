@@ -10,4 +10,27 @@ window.onload = function() {
     }
 
 
+
+
+
+    // Function test to be asigned to keyboard "Up" key
+
+    function dosth() {
+        document.getElementById("01").style.backgroundColor = "#ccc";
+    }
+
+    
+    document.addEventListener("keypress", checkKey);
+
+    function checkKey(up) {
+        var key = up.which || up.keyCode;
+        if (key === 38) dosth();
+    }
+
+
+
+
+
+
+
 }
