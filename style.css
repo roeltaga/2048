@@ -1,21 +1,33 @@
 /* KEYFRAMES */
 
-@keyframes tileUp {
-    from {
+@keyframes tileDown1 { /* moves down 1 tile */
+    0% {
         margin-top: 0;
         width: 90px;
         height: 90px;
+        grid-area: 1 / 1;
+        z-index: 2;
+        background-color: #faf8ef;
+        opacity: 1;
     }
-    to {
-        margin-top: 105px;
+    90% {opacity: 1;}
+    100% {
+        margin-top: 120px;
         width: 60px;
         height: 60px;
+        grid-area: 1 / 1;
+        z-index: 2;
+        background-color: #faf8ef;
+        opacity: 0;
     }
 }
 
 #a11 {
-    animation-name: tileUp;
+    /* animation-name: tileDown1;
     animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear; */
+    /* animation: tileDown1 2s forwards linear; */
 }
 
 

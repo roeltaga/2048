@@ -73,6 +73,12 @@ window.onload = function() {
 
 
 
+    //Save For Later
+    
+    //this is how to animate
+    //document.getElementById("a11").style.animation = "tileDown1 0.2s forwards linear"; 
+
+
 
 
 
