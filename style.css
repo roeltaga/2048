@@ -30,6 +30,20 @@
     /* animation: tileDown1 2s forwards linear; */
 }
 
+@keyframes tileBorn{
+    0% {
+        width: 70px;
+        height: 70px;
+    }
+    70% {
+        width: 100px;
+        height: 100px;
+    }
+    100% {
+        width: 90px;
+        height: 90px;
+    }
+}
 
 
 
@@ -37,10 +51,11 @@
 
 
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
     font-weight: bold;
     font-size: 16px;
     background-color: #faf8ef;
+    color: #776e65;
 }
 
 .container {
@@ -52,7 +67,6 @@ body {
 
 header {
     text-align: center;
-    color: #776e65;
     font-size: 40px;
     padding: 20px 0;
 }
@@ -99,7 +113,7 @@ header {
     display: inline-block;
     vertical-align: middle;
     line-height: 90px;
-    font-size: 22px;
+    font-size: 42px;
 }
 
 
@@ -116,12 +130,13 @@ header {
 
 #points {
     display: inline-block;
+    color: rgb(56, 66, 66);
 }
 
 #playername {
     text-align: right;
     float: right;
-    color: rgb(23, 27, 27);
+    color: rgb(56, 66, 66);
 }
 
 footer {
@@ -130,6 +145,5 @@ footer {
     text-align: center;
     width: 100%;
     padding: 6px;
-    color: #776e65;;
     font-weight: normal;
 }

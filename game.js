@@ -33,40 +33,43 @@ window.onload = function() {
         //90% chance to be 2, 10% to be 4
         //random 1-4 for coordinates
     function createTile(x,y) {
-        var newTileValue = 0;
-        newTileValue = Math.random() * 10;
-        newTileValue = Math.floor(newTileValue);
-        if (newTileValue < 9) {
-            newTileValue = 2;
-        }
+
+        if (Number.isInteger(x+y) && x!=null && y!=null) {      //nese fut input createTile(5,8) ex...
+            console.log("tile added at  "+ x +":"+ y);
+            document.getElementById("a" + x + y).style.backgroundColor = "#eee4da";
+            document.getElementById("b" + x + y).innerHTML = 2;
+        }   
         else {
-            newTileValue = 4;
+
+            var newTileValue = 0;
+            newTileValue = Math.random() * 10;
+            newTileValue = Math.floor(newTileValue);
+            if (newTileValue < 9) {
+                newTileValue = 2;
+            }
+            else {
+                newTileValue = 4;
+            }
+
+            var newTileX = 0;
+            newTileX = Math.random() * (5 - 1) + 1;
+            newTileX = Math.floor(newTileX);
+
+            var newTileY = 0;
+            newTileY = Math.random() * (5 - 1) + 1;
+            newTileY = Math.floor(newTileY);
+            
+            document.getElementById("a" + newTileX + newTileY).style.animation = "tileBorn 0.16s forwards linear";
+            document.getElementById("a" + newTileX + newTileY).style.backgroundColor = "#eee4da";
+            document.getElementById("b" + newTileX + newTileY).innerHTML = newTileValue;
+            
         }
-        console.log("netTileValue is: " + newTileValue);
-
-        var newTileX = 0;
-        newTileX = Math.random() * (5 - 1) + 1;
-        newTileX = Math.floor(newTileX);
-        console.log("netTileX is: " + newTileX);
-
-        var newTileY = 0;
-        newTileY = Math.random() * (5 - 1) + 1;
-        newTileY = Math.floor(newTileY);
-        console.log("netTileY is: " + newTileY);
-        // document
-
+        
     }
 
     createTile();
+    createTile();
 
-    document.getElementById("a001").innerHTML = 1024;
-    //document.getElementById("01").style.backgroundColor = "#eee4da"; //color for number 2
-
-
-    // let x = document.getElementById("a001");
-    // if (x.innerHTML = 1024) {
-    //     document.getElementById("a001").style.color = "#11e4da";
-    // }
 
 
 
@@ -74,7 +77,7 @@ window.onload = function() {
 
 
     //Save For Later
-    
+
     //this is how to animate
     //document.getElementById("a11").style.animation = "tileDown1 0.2s forwards linear"; 
 
@@ -82,6 +85,11 @@ window.onload = function() {
 
 
 
+    //tileTo4()
+    //tileTo8()
+    //  set animation for tile
+    //      change color ↑ or ↓
+    //                        change inner html
 
 
 
@@ -97,13 +105,15 @@ window.onload = function() {
 
 
 
-    //IDK why I did this LOL
-    for (as=2; as<=9999; as *= 2) {
-        console.log(as);
-        if (document.getElementById("a001").innerHTML == as) {
-            console.log("u gjet " + as);
-        }
-    }
+
+
+    // //IDK why I did this LOL
+    // for (as=2; as<=9999; as *= 2) {
+    //     console.log(as);
+    //     if (document.getElementById("a001").innerHTML == as) {
+    //         console.log("u gjet " + as);
+    //     }
+    // }
 
 
 
