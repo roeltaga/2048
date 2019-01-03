@@ -1,0 +1,23 @@
+starts with 2 tiles - 90% chance is a "2" & 10% is a "4"
+
+
+const tile1 = #a01
+const tile2 = #a02
+let tile1posx = #a01.style......
+
+
+press left*
+
+tile1val = tile1.span.innerHTML;
+tile2val = tile2.span.innerHTML;
+tile3val = tile3.span.innerHTML;
+tile4val = tile4.span.innerHTML;
+
+tile2val !== 0 {
+	if tile2val == tile1val {
+		newTile1val = tile2val + tile1val;
+		makeNewTile(tile2posX -1, tile2posY)
+		delete tile1??
+		newTile.style.gridColumn = 1
+	}
+}

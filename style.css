@@ -1,0 +1,97 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #faf8ef;
+}
+
+.container {
+    position: relative;
+    width: 500px;
+    height: 600px;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+    color: #776e65;
+    font-size: 40px;
+    padding: 20px 0;
+}
+
+
+
+
+
+#game {
+    background-color: #bbada0;
+    width: 400px;
+    height: 400px;
+    margin: 0 50px;
+    padding: 4px;
+    border-radius: 5px;
+    display: grid;
+    /* grid-template-columns: 80px 80px 80px 80px;
+    grid-template-rows: 80px 80px 80px 80px;
+    justify-items: center; */
+
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    grid-gap: 0px;
+}
+
+.cube {
+    padding: 0 0 0 0;
+    margin: auto;
+    background-color: #cdc0b4; /*blank box*/
+    width: 90px;
+    height: 90px;
+    justify-self: center;
+    border-radius: 5px;
+    text-align: center;    
+}
+
+#a01 {
+    border: 3px green solid;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.cube span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 90px;
+    font-size: 22px;
+}
+
+
+
+
+
+
+
+#score {
+    margin: 10px 50px;
+    padding: 20px;
+    font-size: 22px;
+}
+
+#points {
+    display: inline-block;
+}
+
+#playername {
+    text-align: right;
+    float: right;
+    color: rgb(23, 27, 27);
+}
+
+footer {
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    width: 100%;
+    padding: 6px;
+    color: #776e65;;
+    font-weight: normal;
+}
