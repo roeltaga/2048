@@ -1,3 +1,29 @@
+/* KEYFRAMES */
+
+@keyframes tileUp {
+    from {
+        margin-top: 0;
+        width: 90px;
+        height: 90px;
+    }
+    to {
+        margin-top: 105px;
+        width: 60px;
+        height: 60px;
+    }
+}
+
+#a11 {
+    animation-name: tileUp;
+    animation-duration: 0.2s;
+}
+
+
+
+
+
+
+
 body {
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
