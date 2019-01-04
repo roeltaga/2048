@@ -1,5 +1,22 @@
 /* KEYFRAMES */
 
+
+
+@keyframes tileBorn{
+    0% {
+        width: 70px;
+        height: 70px;
+    }
+    70% {
+        width: 100px;
+        height: 100px;
+    }
+    100% {
+        width: 90px;
+        height: 90px;
+    }
+}
+
 @keyframes tileDown1 { /* moves down 1 tile */
     0% {
         margin-top: 0;
@@ -22,28 +39,15 @@
     }
 }
 
-#a11 {
-    /* animation-name: tileDown1;
+/* #a11 {
+    animation-name: tileDown1;
     animation-duration: 0.2s;
     animation-fill-mode: forwards;
-    animation-timing-function: linear; */
-    /* animation: tileDown1 2s forwards linear; */
-}
+    animation-timing-function: linear;
+    animation: tileDown1 2s forwards linear;
+} */
 
-@keyframes tileBorn{
-    0% {
-        width: 70px;
-        height: 70px;
-    }
-    70% {
-        width: 100px;
-        height: 100px;
-    }
-    100% {
-        width: 90px;
-        height: 90px;
-    }
-}
+
 
 
 
@@ -90,7 +94,28 @@ header {
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: repeat(4, 100px);
     grid-gap: 0px;
+    /* z-index: 1; */
 }
+
+#gameOver {
+    display: none;
+    position: relative;
+    background-color: #d4d4d48a;
+    width: 400px;
+    height: 400px;
+    margin: -408px 50px 0;
+    padding: 4px;
+    border-radius: 5px;
+    z-index: 4;
+}
+
+#a11 {
+    border: rgb(189, 223, 138) 1px solid;
+    z-index: 3;
+}
+
+
+
 
 .cube {
     padding: 0 0 0 0;
@@ -100,13 +125,8 @@ header {
     height: 90px;
     justify-self: center;
     border-radius: 5px;
-    text-align: center;    
-}
-
-#a01 {
-    border: 3px green solid;
-    grid-column: 1;
-    grid-row: 1;
+    text-align: center;
+    z-index: 2;
 }
 
 .cube span {
@@ -140,7 +160,7 @@ header {
 }
 
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0px;
     text-align: center;
     width: 100%;

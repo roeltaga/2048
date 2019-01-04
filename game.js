@@ -35,8 +35,6 @@ window.onload = function() {
         
     function createTile(x,y) {
 
-
-
         //  for loop to check if there is any empty tile
         let emptyTile=false;
         loop1:
@@ -49,25 +47,23 @@ window.onload = function() {
                 }
             }
         }
-        console.log("ka tile bosh: " + emptyTile);
 
 
 
         if (emptyTile == false) {
             console.log("Game over"); //to be replaced by checkIfMovesAvailable()
+            document.getElementById("gameOver").style.display = "block";
             return;
         }
 
+        // else if (Number.isInteger(x+y) && x!=null && y!=null) {      // TILE nese fut input createTile(5,8) ex...
+        //     console.log("tile added at  "+ x +":"+ y);
+        //     document.getElementById("a" + x + y).style.backgroundColor = "#eee4da"; //1
+        //     document.getElementById("a" + x + y).classList.add("tileActive"); //1
+        //     document.getElementById("b" + x + y).innerHTML = 2; //1
+        // }   
 
-
-        else if (Number.isInteger(x+y) && x!=null && y!=null) {      //nese fut input createTile(5,8) ex...
-            console.log("tile added at  "+ x +":"+ y);
-            document.getElementById("a" + x + y).style.backgroundColor = "#eee4da";
-            document.getElementById("b" + x + y).innerHTML = 2;
-        }   
-
-        else {      // create random tile
-
+        else {                                                       // TILE create random tile
             var newTileValue = 0;
             newTileValue = Math.random() * 10;
             newTileValue = Math.floor(newTileValue);
@@ -81,20 +77,30 @@ window.onload = function() {
             var newTileX = 0;
             newTileX = Math.random() * (5 - 1) + 1;
             newTileX = Math.floor(newTileX);
-
             var newTileY = 0;
             newTileY = Math.random() * (5 - 1) + 1;
             newTileY = Math.floor(newTileY);
             
             // if tile empty create it, else re-run the function
-            if (document.getElementById("b" + newTileX + newTileY).innerHTML == "") { 
-                document.getElementById("a" + newTileX + newTileY).style.animation = "tileBorn 0.16s forwards linear";
-                document.getElementById("a" + newTileX + newTileY).style.backgroundColor = "#eee4da";
-                document.getElementById("b" + newTileX + newTileY).innerHTML = newTileValue;
+            let newTileA = document.getElementById("a" + newTileX + newTileY);
+            let newTileB = document.getElementById("b" + newTileX + newTileY);
+
+            if (newTileB.innerHTML == "") { 
+                newTileA.style.animation = "tileBorn 0.16s forwards linear";
+
+                newTileB.innerHTML = newTileValue;
+                
+                if (newTileValue == 4) {
+                    newTileA.style.backgroundColor = "#ede0c8";
+                }
+                else {newTileA.style.backgroundColor = "#eee4da";}
+                // newTileA.classList.add("tileActive");
+                console.log("tile added");
             }
-            else if (emptyTile == true){
+            else {
                 console.log("reboot birth");
                 createTile();
+                // return;
             }
         }
         
@@ -140,18 +146,50 @@ window.onload = function() {
 
 
 
-    // //IDK why I did this LOL
-    // for (as=2; as<=9999; as *= 2) {
-    //     console.log(as);
-    //     if (document.getElementById("a001").innerHTML == as) {
-    //         console.log("u gjet " + as);
-    //     }
-    // }
-
     function doubleTile(x,y) {
         let tile = document.getElementById("b"+x+y);
         tile.innerHTML *= 2;
         console.log(tile.innerHTML);
+
+        if (tile.innerHTML == 4) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#ede0c8";
+        }
+        else if (tile.innerHTML == 8) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#f2b179";
+            document.getElementById("b"+x+y).style.color = "#f9f6f2";
+        }
+        else if (tile.innerHTML == 16) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#f59563";
+        }
+        else if (tile.innerHTML == 32) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#f67c5f";
+        }
+        else if (tile.innerHTML == 64) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#f65e3b";
+        }
+        else if (tile.innerHTML == 128) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#edcf72";
+            document.getElementById("b"+x+y).style.fontSize = "36px";
+        }
+        else if (tile.innerHTML == 256) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#edcc61";
+        }
+        else if (tile.innerHTML == 512) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#edc850";
+        }
+        else if (tile.innerHTML == 1024) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#edc22e";
+            document.getElementById("b"+x+y).style.fontSize = "32px";
+        }
+        else if (tile.innerHTML == 2048) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#b784ab";
+        }
+        else if (tile.innerHTML == 4096) {
+            document.getElementById("a"+x+y).style.backgroundColor = "#302b25";
+        }
+        else if (tile.innerHTML == 8192) { //you kidding me?
+            document.getElementById("a"+x+y).style.backgroundColor = "#000000";
+        }
     }
 
 
@@ -160,19 +198,36 @@ window.onload = function() {
 
     // Function test to be asigned to keyboard "Up" key
 
-    function goup() {
-        var temp = document.getElementById("a21").style.gridRow;
+    // function goDown(x,y) {
+    //     if (document.getElementById("a"+x+y).style.gridRowStart < 4) {
+    //         let elem = document.getElementById("a"+x+y);
+    //         let nextRow = elem.style.gridRow.charAt[0] +1;
+    //         elem.style.gridRowStart = nextRow;
+    //         // document.getElementById("a11").style.animation = "none";
+    //         // document.getElementById("a"+x+y).style.animation = "tileDown1 0.2s  linear";
+    //     }
+    // }
+
+    function goDown(x,y) {
+        var temp = document.getElementById("a"+x+y).style.gridRow;
         var posx = temp.charAt(0);
-        if (posx < 5)
+        if (posx < 4)
         {
             posx ++;
         }
-        
         document.getElementById("a11").style.gridRow = posx;
-        document.getElementById("a11").style.gridColumn = 1;
+
+        // document.getElementById("a11").style.gridColumn = 1;
         
-        document.getElementById("a11").style.backgroundColor = "#ccc";
+        // document.getElementById("a11").style.backgroundColor = "#ccc";
     }
+
+
+
+
+
+
+
 
 
 
@@ -188,9 +243,18 @@ window.onload = function() {
     window.onkeydown = function(e) {
         var key = e.keyCode ? e.keyCode : e.which;
         
-        e.preventDefault();
-        if (key == 38) createTile();    //Up
-        if (key == 39) doubleTile(2,2);    //right
+        if (key == 188) {
+            e.preventDefault(); 
+            createTile();    // <
+        }
+
+        if (key == 190) doubleTile(1,1);    // >
+
+        if (key == 191) {   // /
+            e.preventDefault();
+            goDown(1,1);
+        }
+
      }
 
 
