@@ -33,7 +33,7 @@ window.onload = function() {
         //90% chance to be 2, 10% to be 4
         //random 1-4 for coordinates
         
-    function createTile(x,y) {
+    function createTile(x,y) { // x,y added again for use when moving a tile, you spawn a blank one where it was...
 
         //  for loop to check if there is any empty tile
         let emptyTile=false;
@@ -48,20 +48,11 @@ window.onload = function() {
             }
         }
 
-
-
         if (emptyTile == false) {
             console.log("Game over"); //to be replaced by checkIfMovesAvailable()
             document.getElementById("gameOver").style.display = "block";
             return;
         }
-
-        // else if (Number.isInteger(x+y) && x!=null && y!=null) {      // TILE nese fut input createTile(5,8) ex...
-        //     console.log("tile added at  "+ x +":"+ y);
-        //     document.getElementById("a" + x + y).style.backgroundColor = "#eee4da"; //1
-        //     document.getElementById("a" + x + y).classList.add("tileActive"); //1
-        //     document.getElementById("b" + x + y).innerHTML = 2; //1
-        // }   
 
         else {                                                       // TILE create random tile
             var newTileValue = 0;
@@ -90,9 +81,7 @@ window.onload = function() {
 
                 newTileB.innerHTML = newTileValue;
                 
-                if (newTileValue == 4) {
-                    newTileA.style.backgroundColor = "#ede0c8";
-                }
+                if (newTileValue == 4) newTileA.style.backgroundColor = "#ede0c8";
                 else {newTileA.style.backgroundColor = "#eee4da";}
                 // newTileA.classList.add("tileActive");
                 console.log("tile added");
@@ -100,7 +89,6 @@ window.onload = function() {
             else {
                 console.log("reboot birth");
                 createTile();
-                // return;
             }
         }
         
@@ -129,12 +117,6 @@ window.onload = function() {
     //  set animation for tile
     //      change color ↑ or ↓
     //                        change inner html
-
-
-
-
-
-
 
 
 
@@ -189,6 +171,13 @@ window.onload = function() {
         }
         else if (tile.innerHTML == 8192) { //you kidding me?
             document.getElementById("a"+x+y).style.backgroundColor = "#000000";
+            document.getElementById("b"+x+y).style.color = "#00ffff";
+        }
+        else { //Break the game please LOL
+            document.getElementById("a"+x+y).style.backgroundColor = "#000000";
+            document.getElementById("b"+x+y).style.color = "#ffff00";
+            document.getElementById("b"+x+y).innerHTML = "You Win";
+            document.getElementById("b"+x+y).style.fontSize = "18px";
         }
     }
 
@@ -196,30 +185,29 @@ window.onload = function() {
 
 
 
-    // Function test to be asigned to keyboard "Up" key
 
-    // function goDown(x,y) {
-    //     if (document.getElementById("a"+x+y).style.gridRowStart < 4) {
-    //         let elem = document.getElementById("a"+x+y);
-    //         let nextRow = elem.style.gridRow.charAt[0] +1;
-    //         elem.style.gridRowStart = nextRow;
-    //         // document.getElementById("a11").style.animation = "none";
-    //         // document.getElementById("a"+x+y).style.animation = "tileDown1 0.2s  linear";
-    //     }
-    // }
+
+
+    //TEST function
 
     function goDown(x,y) {
-        var temp = document.getElementById("a"+x+y).style.gridRow;
-        var posx = temp.charAt(0);
+        let elem = document.getElementById("a"+x+y);
+        let posx = elem.style.gridRow.charAt(0);
         if (posx < 4)
         {
             posx ++;
         }
-        document.getElementById("a11").style.gridRow = posx;
+        document.getElementById("a"+x+y).style.gridRow = posx;
 
-        // document.getElementById("a11").style.gridColumn = 1;
-        
-        // document.getElementById("a11").style.backgroundColor = "#ccc";
+        elem.style.animation = "tileDown1 0.1s forwards linear";
+        //or try removing class and adding it again
+
+
+        elem.addEventListener("animationend", myEndFunction(x,y));
+    }
+
+    function goDownEnd(x,y) {
+        // elem.style.animation  asdasdfadsf ds = "";
     }
 
 
@@ -254,6 +242,14 @@ window.onload = function() {
             e.preventDefault();
             goDown(1,1);
         }
+
+
+
+
+
+
+
+        if (key == 78) location.reload();    // n - New Game
 
      }
 
