@@ -36,29 +36,37 @@ window.onload = function() {
     function createTile(x,y) {
 
 
-        //  for loop to check if there is any empty tile
 
+        //  for loop to check if there is any empty tile
         let emptyTile=false;
+        loop1:
         for (i=1; i<=4; i++) {
+            loop2:
             for (o=1; o<=4; o++) {
                 if (document.getElementById("b" + i + o).innerHTML == "") {
-                    emptyTile = false;
+                    emptyTile = true;
+                    break loop1;
                 }
-                if (emptyTile = false) break;
             }
-            if (emptyTile = false) break;
         }
         console.log("ka tile bosh: " + emptyTile);
 
 
 
+        if (emptyTile == false) {
+            console.log("Game over"); //to be replaced by checkIfMovesAvailable()
+            return;
+        }
 
-        if (Number.isInteger(x+y) && x!=null && y!=null) {      //nese fut input createTile(5,8) ex...
+
+
+        else if (Number.isInteger(x+y) && x!=null && y!=null) {      //nese fut input createTile(5,8) ex...
             console.log("tile added at  "+ x +":"+ y);
             document.getElementById("a" + x + y).style.backgroundColor = "#eee4da";
             document.getElementById("b" + x + y).innerHTML = 2;
         }   
-        else {  // create random tile
+
+        else {      // create random tile
 
             var newTileValue = 0;
             newTileValue = Math.random() * 10;
@@ -87,10 +95,6 @@ window.onload = function() {
             else if (emptyTile == true){
                 console.log("reboot birth");
                 createTile();
-            }
-            else if (emptyTile == false) {
-                console.log("Game over");
-                // document.write = "<h1>Game Over!</h1>";
             }
         }
         
@@ -144,12 +148,18 @@ window.onload = function() {
     //     }
     // }
 
+    function doubleTile(x,y) {
+        let tile = document.getElementById("b"+x+y);
+        tile.innerHTML *= 2;
+        console.log(tile.innerHTML);
+    }
+
 
 
 
 
     // Function test to be asigned to keyboard "Up" key
-    // 37 left - 38 up - 39 right - 40 down
+
     function goup() {
         var temp = document.getElementById("a21").style.gridRow;
         var posx = temp.charAt(0);
@@ -164,20 +174,23 @@ window.onload = function() {
         document.getElementById("a11").style.backgroundColor = "#ccc";
     }
 
-    
-    // document.addEventListener("keydown", keyboard);
-
-    // function keyboard(up) {
-    //     var key = keyboard.keyCode;
-    //     if (key === 39) createTile(); //numpad0
-    //     if (key === 38) goup();
-    // }
 
 
-    window.onkeyup = function(e) {
+
+
+
+
+
+    //KEYBOARD Events
+
+
+
+    window.onkeydown = function(e) {
         var key = e.keyCode ? e.keyCode : e.which;
-     
-        if (key == 38) createTile();
+        
+        e.preventDefault();
+        if (key == 38) createTile();    //Up
+        if (key == 39) doubleTile(2,2);    //right
      }
 
 
