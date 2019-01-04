@@ -8,3 +8,5 @@
 
 03/01/2019	14:45	30m	- create 2 first tiles and animate them
 		21:00   2h 15m
+
+04/01/2019	11:30	
