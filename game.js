@@ -42,20 +42,12 @@ window.onload = function() {
         for (i=1; i<=4; i++) {
             for (o=1; o<=4; o++) {
                 if (document.getElementById("b" + i + o).innerHTML == "") {
-                    let emptyTile = true;
+                    emptyTile = false;
                 }
+                if (emptyTile = false) break;
             }
-            if (emptyTile = true){
-                break;
-            }
+            if (emptyTile = false) break;
         }
-
-
-        // let emptyTile;
-        // if (document.getElementById("b11").innerHTML == "") {
-        //     emptyTile = true;
-        // }
-        // else { emptyTile = false;}
         console.log("ka tile bosh: " + emptyTile);
 
 
@@ -98,7 +90,7 @@ window.onload = function() {
             }
             else if (emptyTile == false) {
                 console.log("Game over");
-                document.write = "<h1>Game Over!</h1>";
+                // document.write = "<h1>Game Over!</h1>";
             }
         }
         
@@ -159,26 +151,34 @@ window.onload = function() {
     // Function test to be asigned to keyboard "Up" key
     // 37 left - 38 up - 39 right - 40 down
     function goup() {
-        var temp = document.getElementById("a01").style.gridRow;
+        var temp = document.getElementById("a21").style.gridRow;
         var posx = temp.charAt(0);
-        if (posx < 4)
+        if (posx < 5)
         {
             posx ++;
         }
         
-        document.getElementById("a01").style.gridRow = posx;
-        document.getElementById("a01").style.gridColumn = 1;
+        document.getElementById("a11").style.gridRow = posx;
+        document.getElementById("a11").style.gridColumn = 1;
         
-        document.getElementById("a01").style.backgroundColor = "#ccc";
+        document.getElementById("a11").style.backgroundColor = "#ccc";
     }
 
     
-    document.addEventListener("keypress", checkKey);
+    // document.addEventListener("keydown", keyboard);
 
-    function checkKey(up) {
-        var key = up.which || up.keyCode;
-        if (key === 38) goup();
-    }
+    // function keyboard(up) {
+    //     var key = keyboard.keyCode;
+    //     if (key === 39) createTile(); //numpad0
+    //     if (key === 38) goup();
+    // }
+
+
+    window.onkeyup = function(e) {
+        var key = e.keyCode ? e.keyCode : e.which;
+     
+        if (key == 38) createTile();
+     }
 
 
 
@@ -187,3 +187,11 @@ window.onload = function() {
 
 
 }
+
+
+
+
+
+
+
+
